@@ -2,26 +2,6 @@
 
 > A high-density tactical interface for atmospheric monitoring, emergency broadcast management, and distributed sensor network operations — built for specialists who need clarity under pressure.
 
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat-square&logo=tailwindcss)
-![License](https://img.shields.io/badge/license-private-red?style=flat-square)
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Core Modules](#core-modules)
-- [HCI Design Principles](#hci-design-principles)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Setup & Development](#setup--development)
-- [User Roles](#user-roles)
-- [Data Models](#data-models)
-- [Deployment](#deployment)
-
 ---
 
 ## Overview
@@ -137,25 +117,6 @@ npm run dev
 
 The app will be available at **http://localhost:3000**
 
-### Available Scripts
-
-| Command | Description |
-|---|---|
-| `npm run dev` | Start dev server on port 3000 (network accessible) |
-| `npm run build` | Production build → outputs to `dist/` |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Type-check with `tsc --noEmit` |
-| `npm run clean` | Remove the `dist/` directory |
-
-### Path Alias
-
-The `@` alias is configured to resolve to the project root:
-
-```ts
-import { UserRole } from '@/types';
-import { cn } from '@/utils';
-```
-
 ---
 
 ## User Roles
@@ -186,62 +147,3 @@ Normal → Warning → Emergency
 `active` · `inactive` · `offline`
 
 ---
-
-## Deployment
-
-### GitHub
-
-```bash
-# Initialize and push to GitHub
-git init
-git add .
-git commit -m "feat: initial commit"
-
-git remote add origin https://github.com/YOUR_USERNAME/skywatch-pro.git
-git branch -M main
-git push -u origin main
-```
-
-> Ensure `.gitignore` is present before `git add .` to exclude `node_modules/` and `dist/`.
-
----
-
-### Vercel
-
-#### Option A — Dashboard (Recommended)
-
-1. Visit [vercel.com](https://vercel.com) → **New Project** → Import your GitHub repo
-2. Vercel auto-detects Vite. Confirm these settings:
-
-| Setting | Value |
-|---|---|
-| Framework Preset | Vite |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Install Command | `npm install` |
-
-3. Click **Deploy**. Every push to `main` triggers a redeployment automatically.
-
-#### Option B — Vercel CLI
-
-```bash
-npm i -g vercel
-vercel login
-vercel        # follow prompts (Vite auto-detected)
-vercel --prod # promote to production
-```
-
-#### SPA Routing Fix
-
-Create a `vercel.json` in the project root to prevent 404s on page refresh:
-
-```json
-{
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
-```
-
----
-
-> **No API keys. No `.env` files. No backend required.**  
-> Clone, install, run. That's it.
